@@ -1,0 +1,59 @@
+---
+title: "Country"
+output: github_document
+---
+```{r, echo=FALSE}
+library(ggplot2)
+library(tidyverse)
+library(RColorBrewer)
+library(scales)
+library(plotly)
+library(DT)
+
+countries <- read.csv("Countries.csv")
+#data overview
+glimpse(countries)
+attach(countries)
+datatable(countries)
+```
+
+```{r, echo=FALSE,results='hide',fig.keep='all'}
+plot1 = ggplot(countries, aes(x = log(GDPPC), y = Literacy)) + 
+  geom_point(aes(colour = Region)) +
+  geom_text(aes(label = Name), position=position_jitter())
+  labs(title = "GDP Per Capita and Literacy Rate acrross different region", x = "GDP per Capita", y = "Literacy Rate")
+plot1
+```
+
+```{r}
+plot2 = ggplot(countries, aes(x = log(GDPPC), y = InfantMortality)) + 
+  geom_point(aes(colour = Region)) +
+  geom_text(aes(label = Name), position=position_jitter())
+  labs(title = "GDP Per Capita and Infant mortality Rate acrross different region", x = "GDP per Capita", y = "Infant Mortality Rate")
+plot2
+```
+
+```{r}
+plot3 = ggplot(countries, aes(x = log(GDPPC), y = Agriculture)) + 
+  geom_point(aes(colour = Region)) +
+  geom_text(aes(label = Name), position=position_jitter())
+  labs(title = "GDP Per Capita and Agriculture acrross different region", x = "GDP per Capita", y = "Agriculture")
+plot3
+```
+
+```{r}
+plot4 = ggplot(countries, aes(x = log(GDPPC), y = Population)) + 
+  geom_point(aes(colour = Region)) +
+  geom_text(aes(label = Name), position=position_jitter())
+  labs(title = "GDP Per Capita and Population acrross different region", x = "GDP per Capita", y = "Population")
+plot4
+```
+
+
+```{r}
+plot5 = ggplot(countries, aes(x = log(GDPPC), y = NetMigration)) + 
+  geom_point(aes(colour = Region)) +
+  geom_text(aes(label = Name), position=position_jitter())
+  labs(title = "GDP Per Capita and Net Migration acrross different region", x = "GDP per Capita", y = "Net Migration")
+plot5
+```
